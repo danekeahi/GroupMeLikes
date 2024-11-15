@@ -1,0 +1,43 @@
+name: Google Sheets Integration Workflow
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '*/5 * * * *'  # Runs every hour; adjust as needed
+
+jobs:
+  connect-to-sheets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install GroupyAPI gspread oauth2client
+          pip install --upgrade requests urllib3
+
+      - name: List installed packages
+        run: pip list
+
+      - name: Create credentials file
+        env:
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+        run: |
+          echo "$GOOGLE_CREDENTIALS" > client_secret.json
+
+      - name: Run Python script to connect to Google Sheets
+        env:
+          TOKEN: ${{ secrets.TOKEN }}
+          SPREADSHEET_ID: ${{ secrets.SPREADSHEET_ID }}
+          GROUPME_ID: ${{ secrets.GROUPME_ID }}
+        run: |
+          python3 main.py
