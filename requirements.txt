@@ -1,3 +1,0 @@
-groupy
-gspread
-oauth2client
