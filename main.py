@@ -3,7 +3,7 @@ import os
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import csv
-from datetime import datetime
+from datetime import datetime, time
 
 # Google Sheets API Setup
 scope = ["https://spreadsheets.google.com/feeds", 'https://www.googleapis.com/auth/spreadsheets',
@@ -89,6 +89,7 @@ def main():
             message["like_count"],
             message["text"]
         ])
+         time.sleep(1)
 
     # Output data to Google Sheets
     worksheet = spreadsheet.sheet1  # Modify to target a specific sheet if needed
