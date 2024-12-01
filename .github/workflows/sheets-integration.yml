@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '*/5 * * * *'  # Runs every hour; adjust as needed
+    - cron: '*/10 * * * *'  # Runs every 10 min
 
 jobs:
   connect-to-sheets:
