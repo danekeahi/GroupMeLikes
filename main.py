@@ -3,7 +3,8 @@ import os
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import csv
-from datetime import datetime, time
+import time
+from datetime import datetime
 
 # Google Sheets API Setup
 scope = ["https://spreadsheets.google.com/feeds", 'https://www.googleapis.com/auth/spreadsheets',
