@@ -89,7 +89,7 @@ def main():
             message["like_count"],
             message["text"]
         ])
-         time.sleep(1)
+        time.sleep(1)
 
     # Output data to Google Sheets
     worksheet = spreadsheet.sheet1  # Modify to target a specific sheet if needed
