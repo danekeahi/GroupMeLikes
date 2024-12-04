@@ -53,7 +53,7 @@ def main():
 
             # Write message data to CSV
             writer.writerow([message.created_at, sender_id, message_text, like_count, len(message.attachments)])
-            time.sleep(1)
+            time.sleep(0.2)
 
     # Sort messages by like count in descending order to get the most liked messages
     messages_list.sort(key=lambda x: x["like_count"], reverse=True)
