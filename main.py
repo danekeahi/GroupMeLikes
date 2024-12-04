@@ -53,6 +53,7 @@ def main():
 
             # Write message data to CSV
             writer.writerow([message.created_at, sender_id, message_text, like_count, len(message.attachments)])
+            time.sleep(1)
 
     # Sort messages by like count in descending order to get the most liked messages
     messages_list.sort(key=lambda x: x["like_count"], reverse=True)
@@ -90,7 +91,6 @@ def main():
             message["like_count"],
             message["text"]
         ])
-        time.sleep(1)
 
     # Output data to Google Sheets
     worksheet = spreadsheet.sheet1  # Modify to target a specific sheet if needed
